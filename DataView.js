@@ -188,8 +188,17 @@ let LEDGER_WINDOW = {
             let temp;
             count = 0;
             for (let index = 0; index < filterClone.length - 1; index++) {
-                let rowA_Attribute = filterClone[index].getAttribute(sortCriteria).toUpperCase()
-                let rowB_Attribute = filterClone[index + 1].getAttribute(sortCriteria).toUpperCase()
+                let rowA_Attribute;
+                let rowB_Attribute;
+                //bug fix #1
+                if (sortCriteria == "date") {
+                    rowA_Attribute = Number.parseInt(filterClone[index].getAttribute(sortCriteria));
+                    rowB_Attribute = Number.parseInt(filterClone[index + 1].getAttribute(sortCriteria));
+                } else {
+                    rowA_Attribute = filterClone[index].getAttribute(sortCriteria).toUpperCase()
+                    rowB_Attribute = filterClone[index + 1].getAttribute(sortCriteria).toUpperCase()
+                }
+                // **end bugfix #1**
                 if (rowA_Attribute < rowB_Attribute) {
                     temp = filterClone[index].cloneNode(true);
                     filterClone[index] = filterClone[index+1].cloneNode(true);
