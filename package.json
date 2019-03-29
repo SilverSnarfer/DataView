@@ -1,0 +1,24 @@
+{
+  "name": "dataview",
+  "version": "1.0.0",
+  "description": "A simple data viewer that consumes json data and displays it. Features sorting and filtering. Upcomming features include exporting (pdf/spreadsheed) and saving filter options.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap-4": "4.3.1",
+    "spinner": "loading.io",
+    "transitions": "loading.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilverSnarfer/DataView.git"
+  },
+  "author": "Aaron Hayward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SilverSnarfer/DataView/issues"
+  },
+  "homepage": "https://github.com/SilverSnarfer/DataView#readme"
+}
