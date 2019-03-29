@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=".\css\dataView.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href=".\css\spinner.css">
+    <link rel="stylesheet" href=".\css\transition.css">
+    <title>Data View</title>
+</head>
+
+<body>
+    <div id="root">
+
+        <div id="top">
+            <div id="topGrid">
+                <div id="sort">
+                    <label for="selectSort">Sort By</label>
+                    <select class="form-control" name="sort" id="selectSort">
+                        <option selected disabled>Select a Sort</option>
+                        <option value="incidentid">Incident</option>
+                        <option value="priorityid">Priority</option>
+                        <option value="assigneeid">Assignee</option>
+                        <option value="date">Date</option>
+                        <!-- <option value="type">type</option> -->
+                    </select>
+                </div>
+                <div id="saved">
+                    <label for="selectQuery">Saved Queries</label>
+                    <select class="form-control" name="sort" id="selectQuery" disabled>
+                        <option value="type" selected>Coming Soon!</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="meat">
+            <div id="tableDiv">
+                
+                <table class="bg-dark text-light" id="table">
+                    <thead>
+                        <tr>
+                            <th width="1%">Incident</th>
+                            <th width="10%">date</th>
+                            <th width="1%">Assignee</th>
+                            <th width="10%">Title</th>
+                            <th>Description</th>
+                            <th>Resolution</th>
+                            <th>User</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableContent">       
+                    </tbody>
+                </table>
+                <div id="emptyResults" class="hide ldt-fade-in"><img src="img\no-results.gif" alt="" srcset="" class="noResults"></div>
+                <div id="spinner" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <!-- <div>No results found</div> -->
+                
+            </div>
+        </div>
+
+        <div id="bottom"><button class="btn btn-primary" id="exportButton" onclick="handleExport()" disabled>Export (Coming Soon!)</button></div>
+
+        <div id="left">
+            <div id="filterOptions">
+                <div id="leftGrid">
+                    <span style="color:black"><strong>Filter Options</strong></span>
+                    <div id="dates">
+                        <!-- <label for="dateBegin"> Date begin</label>
+                        <input class="form-control" type="text" name="dateBegin" id="dateBegin"><br>
+
+                        <label for="dateEnd">Date end</label>
+                        <input class="form-control" type="text" name="dateEnd" id="dateEnd"><br> -->
+                    </div>
+
+                    <div id="ids">
+                        
+                        <label for="incidentid">Incident Id</label>
+                        <input class="form-control" type="text" name="incidentid" id="incidentid"><br>
+
+                        <label for="assigneeid">Assignee Id</label>
+                        <input class="form-control" type="text" name="assigneeid" id="assigneeid"><br>
+                        
+                        <label for="userid">User Id</label>
+                        <input class="form-control" type="text" name="userid" id="userid"><br>
+
+                        <label for="priorityid">Priority Rating</label>
+                        <input class="form-control" type="text" name="priorityid" id="priorityid"><br>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src=".\DataView.js"></script>
+</body>
+
+</html>
