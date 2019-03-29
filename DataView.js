@@ -37,7 +37,7 @@ let LEDGER_WINDOW = {
     }
 
     function getDataFromAPI(resolve) {
-        fetch("http://127.0.0.1:8000/DataView.json")
+        fetch("https://api.myjson.com/bins/1ggcoi")
             .then(res => res.json())
             .then(data => resolve(data.entries))
     }
