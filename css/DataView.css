@@ -1,0 +1,158 @@
+#root {
+    display: grid;
+    color: rgb(247, 247, 247);
+    background-color: #282c34;
+    
+    
+    max-width: 98%;
+    grid-template-rows: repeat(8, minmax(0px, auto));
+    grid-template-columns: repeat(6, 1fr);
+   margin:2% auto;
+    gap: 10px;
+}
+
+
+#top{
+    grid-column: 1/7;
+    grid-row: 1/2;
+}
+
+#meat {
+    grid-column: 2/7;
+    grid-row: 2/8;
+    margin-right: 10px;
+}
+
+#bottom {
+    grid-column: 2/7;
+    grid-row: 8/9;
+    margin-bottom: 10px;
+}
+
+#bottom #exportButton {
+    margin: auto;
+}
+
+#left {
+    padding: 4px;
+    margin-left: 10px;
+    grid-column: 1/2;
+    grid-row: 2/7;
+    background-color: #585858;
+    border-radius: 20px;
+}
+
+#topGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, minmax(30px, auto));
+    margin: 0 auto;
+    
+}
+
+#leftGrid {
+    display: grid;
+    max-width: 98%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, minmax(55px, auto));
+    margin: 0 auto;
+    
+}
+
+#leftGrid #dates {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+#leftGrid #ids {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#topGrid #sort {
+    grid-column: 6/7;
+    grid-row: 3/5;
+    margin: auto 12%;
+}
+
+#topGrid #saved {
+    grid-column: 1/2;
+    grid-row: 3/5;
+    
+}
+
+/* ***************general styling*********** */
+
+body{
+    background-color: #000000 !important;
+    
+}
+td, th{
+    padding: 3px;
+}
+tr {
+    transition: transform .4s;
+}
+
+#selectQuery {
+    margin-left: 10px;
+    width: 90%;
+}
+tbody tr:hover {
+    background-color: blanchedalmond !important;
+    color: black !important;
+    transform: scale(1.02);
+    
+  
+}
+#root {
+    border-radius: 20px;
+    border: 1px solid rgb(44, 2, 2);
+
+    
+}
+
+#root #table tr:nth-child(even){
+    background-color: darkolivegreen;
+    
+}
+
+#root div {
+    text-align: center;
+}
+
+select {
+    transition: .5s;
+}
+select:hover {
+    transform: scale(1.05);
+}
+#ids input:hover {
+    transform: scale(1.05);
+}
+
+#ids input {
+    transition: .3s;
+}
+#bottom #exportButton:hover {
+    
+    transform: scale(1.1);
+}
+
+#bottom #exportButton {
+    transition: .2s;
+    padding: 10px 30%;
+}
+table {
+    position:relative;
+    border-radius: 10px;
+    margin: auto 1%;
+}
+.noResults {
+    border-radius: 20% 3% 20% 3%;
+    margin-top: 5%;
+    opacity: 0.4;
+}
+
+.hide {
+    display: none;
+}
