@@ -88,9 +88,12 @@ body{
 }
 td, th{
     padding: 3px;
+    height: 100px !important;
+    overflow: hidden !important;
 }
 tr {
     transition: transform .4s;
+    max-height: 10px !important;
 }
 
 #selectQuery {
@@ -155,4 +158,10 @@ table {
 
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 600px){
+    .removeable {
+        display: none;
+    }
 }
