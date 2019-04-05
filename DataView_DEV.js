@@ -70,8 +70,7 @@ let LEDGER_WINDOW = {
                                 minute: "2-digit"
                             })));
                     } else {
-                        console.log("key:", key);
-                        if (key == "description" || key == "solution") {
+                        if (key == "description" || key == "solution" || key == "user" || key == "assignee" || key == "type") {
                              td.classList.add("removeable");
                         }
                         td.append(document.createTextNode(obj[key]));
@@ -249,5 +248,15 @@ let LEDGER_WINDOW = {
         }
     }
 })();
+
+function design() {
+    document.getElementById("tbotableContentdy").addEventListener("click", handleClick);
+
+
+    function handleClick(e) {
+        console.log(e);
+        
+    }
+}
 
 
