@@ -44,14 +44,14 @@
                 <table class="bg-dark text-light" id="table">
                     <thead>
                         <tr>
-                            <th width="1%">Incident</th>
-                            <th width="10%">Date</th>
-                            <th width="1%">Assignee</th>
-                            <th width="10%">Title</th>
+                            <th >Incident</th>
+                            <th >Date</th>
+                            <th class="removeable">Assignee</th>
+                            <th >Title</th>
                             <th class="removeable">Description</th>
                             <th class="removeable">Solution</th>
-                            <th>User</th>
-                            <th>Type</th>
+                            <th class="removeable">User</th>
+                            <th class="removeable">Type</th>
                             <th>Priority</th>
                         </tr>
                     </thead>
@@ -65,8 +65,13 @@
             </div>
         </div>
 
-        <div id="bottom"><button class="btn btn-primary" id="exportButton" onclick="handleExport()" disabled>Export (Coming Soon!)</button></div>
-
+        <div id="bottom"><button class="btn btn-primary" id="exportButton" disabled>Export (Coming Soon!)</button></div>
+        <div id="modal">
+            <div id="modalContent">
+                <span class="close">&times;</span>
+                <p>Test modal text</p>
+            </div>
+        </div>
         <div id="left">
             <div id="filterOptions">
                 <div id="leftGrid">
