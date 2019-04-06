@@ -249,14 +249,31 @@ let LEDGER_WINDOW = {
     }
 })();
 
-function design() {
-    document.getElementById("tbotableContentdy").addEventListener("click", handleClick);
-
+(function design() {
+    console.log("here");
+    
+    document.getElementById("tableDiv").addEventListener("click", handleClick, true);
+    document.getElementById("modal").addEventListener("click", handleModalClick, true);
 
     function handleClick(e) {
-        console.log(e);
+        if (e.target.parentNode.tagName.toLowerCase() != "tr" || e.target.tagName.toLowerCase() == "th") {
+            
+            
+            return;
+        }
+        console.log(e); 
+        document.getElementById("modal").style.display = "block";
         
     }
-}
+
+    function handleModalClick(e){
+        if (e.target.className != "close") {
+            return;
+        } else {
+            document.getElementById("modal").style.display = "none";
+        }
+
+    }
+})();
 
 
