@@ -88,8 +88,12 @@ body{
 }
 td, th{
     padding: 3px;
-    height: 100px !important;
-    overflow: hidden !important;
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+
 }
 tr {
     transition: transform .4s;
