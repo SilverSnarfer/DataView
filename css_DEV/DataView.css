@@ -4,13 +4,10 @@
     background-color: #282c34;
     border-radius: 20px;
     border: 1px solid rgb(44, 2, 2);
-    min-width: 500px;
-    max-width: 98%;
-
-
     grid-template-rows: repeat(8, minmax(0px, auto));
     grid-template-columns: repeat(6, 1fr);
-   margin:2% auto;
+    margin: auto 2%;
+    min-width: 1500px;
     gap: 10px;
 }
 
@@ -82,29 +79,50 @@
 /* ***************general styling*********** */
 
 body{
-    background-color: #000000 !important;
-    min-width: 510px;
+    background-color: #000000 !important;    
+}
+
+
+
+
+
+/************************************/
+/*************  TABLE ***************/
+/************************************/
+#tableDiv {
+    width: 98%;
+}
+.table {
+    display:table;
+    border-radius: 10px;
+    width: 100%;
+}
+.thead {
+    display: table-header-group;
+}
+
+.tbody {
+    display: table-row-group;
+}
+.trow {
+    display:table-row;
+    transition: transform .4s;
     
 }
-td, th{
-    padding: 3px;
-    white-space: nowrap;
-    width: 200px;
+.col {
+    display: table-cell;
+    padding: 3px; 
+}
+
+.content {
     overflow: hidden;
     text-overflow: ellipsis;
-    
-
-}
-tr {
-    transition: transform .4s;
-    max-height: 10px !important;
+    white-space: nowrap;
+    width: 99px;
+    text-align: center;
 }
 
-#selectQuery {
-    margin-left: 10px;
-    width: 90%;
-}
-tbody tr:hover {
+.trow:hover {
     background-color: blanchedalmond !important;
     color: black !important;
     transform: scale(1.02);
@@ -112,10 +130,16 @@ tbody tr:hover {
   
 }
 
-#root #table tr:nth-child(even){
+.trow:nth-child(even){
     background-color: darkolivegreen;
     
 }
+
+#selectQuery {
+    margin-left: 10px;
+    width: 90%;
+}
+
 
 #root div {
     text-align: center;
@@ -144,21 +168,6 @@ select:hover {
     padding: 10px 20%;
     margin: auto;
     max-width: 60%;
-}
-#tableDiv {
-    width: 100%;
-
-}
-thead tr th {
-    width: 200px;
-}
-
-
-table {
-    position:relative;
-    border-radius: 10px;
-    margin: auto 1%;
-    /* min-width: 100%; */
 }
 
 .noResults {
@@ -210,8 +219,20 @@ table {
     display: none;
 }
 
-@media screen and (max-width: 1105px){
+@media screen and (max-width: 1105px) {
     .removeable {
         display: none;
     }
 }
+@media screen and (max-width: 1475px) {
+    #root {
+        min-width: 1175px;
+        margin: auto 2%;
+    }
+}
+
+/* @media screen and (min-width: 1475) {
+    #root {
+        min-width: 1475px;
+    }
+} */

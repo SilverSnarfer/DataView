@@ -41,23 +41,24 @@
         <div id="meat">
             <div id="tableDiv">
                 
-                <table class="bg-dark text-light" id="table">
-                    <thead>
-                        <tr>
-                            <th >Incident</th>
-                            <th >Date</th>
-                            <th class="removeable">Assignee</th>
-                            <th >Title</th>
-                            <th class="removeable">Description</th>
-                            <th class="removeable">Solution</th>
-                            <th class="removeable">User</th>
-                            <th class="removeable">Type</th>
-                            <th>Priority</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableContent">       
-                    </tbody>
-                </table>
+                <div class="bg-dark text-light table" id="table">
+                    <div class="thead">
+
+                        <div class="col">Incident</div>
+                        <div class="col">Date</div>
+                        <div class="col removeable">Assignee</div>
+                        <div class="col">Title</div>
+                        <div class="col removeable">Description</div>
+                        <div class="col removeable">Solution</div>
+                        <div class="col removeable">User</div>
+                        <div class="col removeable">Type</div>
+                        <div class="col">Priority</div>
+
+                        
+                    </div>
+                    <div class="tbody" id="tableContent">       
+                    </div>
+                </div>
                 <div id="emptyResults" class="hide ldt-fade-in"><img src="img\no-results.gif" alt="" srcset="" class="noResults"></div>
                 <div id="spinner" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <!-- <div>No results found</div> -->

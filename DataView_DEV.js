@@ -44,22 +44,25 @@ let LEDGER_WINDOW = {
 
     function createTableEntriesFromInitialQuery(data) {
         let entriesFragment = new DocumentFragment();
-        let tbody = createTbody();
+        let tbody = createTbodyDiv();
         
         data.forEach(obj => {
-            let row = document.createElement("tr");
+            let row = document.createElement("div");
+            row.classList.add("trow");
             row.setAttribute("incidentid", obj.incidentId);
             row.setAttribute("date", createUTCDate(obj.date));
-
             row.setAttribute("assigneeid", obj.assignee);
             row.setAttribute("priorityid", obj.priority);
             row.setAttribute("userid", obj.user);
             row.setAttribute("type", obj.type);
             for (const key in obj) {
                 if (obj.hasOwnProperty(key)) {
-                    let td = document.createElement("td");
+                    let td = document.createElement("div");
+                    td.classList.add("col");
+                    let content = document.createElement("div");
+                    content.classList.add("content");
                     if (key == "date") {
-                        td.append(document.createTextNode(  
+                        content.append(document.createTextNode(  
                             new Date(Number.parseInt(row.getAttribute("date"))).toLocaleDateString("en-US", {
                                 weekday: 'short',
                                 year: 'numeric',
@@ -69,11 +72,13 @@ let LEDGER_WINDOW = {
                                 hour:"2-digit",
                                 minute: "2-digit"
                             })));
+                        td.append(content);
                     } else {
                         if (key == "description" || key == "solution" || key == "user" || key == "assignee" || key == "type") {
                              td.classList.add("removeable");
                         }
-                        td.append(document.createTextNode(obj[key]));
+                        content.append(document.createTextNode(obj[key]));
+                        td.append(content);
 
                     }
                     
@@ -107,41 +112,33 @@ let LEDGER_WINDOW = {
 
     function filter(e) {
         let frag = new DocumentFragment();
-        let tbody = createTbody();
+        let tbody = createTbodyDiv();
         
         let workingSet = getFilterWorkingSet();
-        try {
-            if ((e.inputType != "deleteContentForward" && e.inputType != "deleteContentBackward")) {
-                workingSet.forEach(row => {
-                    if (row.getAttribute(e.target.id).indexOf(e.target.value) != -1) {
-                        tbody.append(row.cloneNode(true));
-                    }
-                });
-            } else {
-                workingSet.forEach(row => {
-                    let matches = 0;
-                    let filledInputs = 0;
-                    for (const input of Object.keys(LEDGER_WINDOW.filterInputs)) {
-                        if (LEDGER_WINDOW.filterInputs[input].value != "") {
-                            filledInputs++;
-                            if (row.getAttribute(LEDGER_WINDOW.filterInputs[input].id).indexOf(LEDGER_WINDOW.filterInputs[input].value) != -1) {
-                                matches++;
-                            }
+        
+        if ((e.inputType != "deleteContentForward" && e.inputType != "deleteContentBackward")) {
+            workingSet.forEach(row => {
+                if (row.getAttribute(e.target.id).indexOf(e.target.value) != -1) {
+                    tbody.append(row.cloneNode(true));
+                }
+            });
+        } else {
+            workingSet.forEach(row => {
+                let matches = 0;
+                let filledInputs = 0;
+                for (const input of Object.keys(LEDGER_WINDOW.filterInputs)) {
+                    if (LEDGER_WINDOW.filterInputs[input].value != "") {
+                        filledInputs++;
+                        if (row.getAttribute(LEDGER_WINDOW.filterInputs[input].id).indexOf(LEDGER_WINDOW.filterInputs[input].value) != -1) {
+                            matches++;
                         }
                     }
-                    if (matches == filledInputs) {
-                        tbody.append(row.cloneNode(true));
-                    }
+                }
+                if (matches == filledInputs) {
+                    tbody.append(row.cloneNode(true));
+                }
 
-                });
-            }
-        } catch (error) {
-            let catchRow = document.createElement("tr");
-            let catchData = document.createElement("td");
-            catchData.append(document.createTextNode("error!"));
-            catchRow.append(catchData);
-            console.error("frag vs nodeList discrepency? ", error);
-            tbody.append(catchRow);
+            });
         }
 
         frag.append(tbody);
@@ -185,7 +182,7 @@ let LEDGER_WINDOW = {
 
         filterClone = Array.prototype.slice.call(filterClone,0);
         let frag = new DocumentFragment();
-        let tbody = createTbody();
+        let tbody = createTbodyDiv();
         
         let count = 1;
         while (count > 0) {
@@ -221,10 +218,10 @@ let LEDGER_WINDOW = {
    }
 
     //Utils
-    function createTbody(){
-        let tbody = document.createElement("tbody");
+    function createTbodyDiv(){
+        let tbody = document.createElement("div");
         tbody.setAttribute("id", "tableContent");
-        tbody.classList.add("ldt-fade-in")
+        tbody.classList.add("ldt-fade-in", "tbody");
         return tbody
     }
     function createUTCDate(date) {
@@ -250,19 +247,31 @@ let LEDGER_WINDOW = {
 })();
 
 (function design() {
-    console.log("here");
+
     
     document.getElementById("tableDiv").addEventListener("click", handleClick, true);
     document.getElementById("modal").addEventListener("click", handleModalClick, true);
 
     function handleClick(e) {
-        if (e.target.parentNode.tagName.toLowerCase() != "tr" || e.target.tagName.toLowerCase() == "th") {
-            
-            
+
+        
+        if (!e.target.parentNode.className.includes("trow") && !e.target.className.includes("content")) {
             return;
         }
-        console.log(e); 
-        document.getElementById("modal").style.display = "block";
+        console.log(e);
+        if (e.target.className == "col") {
+            console.log("here", e.target.parentNode.childNodes);
+            
+            let clone = e.target.parentNode.cloneNode(true);
+            let cols = clone.childNodes;
+            cols.forEach(node => {
+                node.firstChild.classList.toggle("content");
+            })
+            LEDGER_WINDOW.filteredResults.getElementById("")
+        } else {
+            console.log("else");
+            
+        }
         
     }
 
@@ -272,7 +281,11 @@ let LEDGER_WINDOW = {
         } else {
             document.getElementById("modal").style.display = "none";
         }
+    }
 
+    function replace(target){
+        let table = document.getElementById("tableContent").parentNode;
+        let tbody = document.getElementById("tableContent");
     }
 })();
 
